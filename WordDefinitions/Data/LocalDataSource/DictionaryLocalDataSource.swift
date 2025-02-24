@@ -53,7 +53,6 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
                         entity = WordDefinitionEntity(context: context)
                         entity.id = UUID()
                         entity.word = definition.word
-          //              entity.timestamp = Date() // Ensure we update the search time
                     }
 
                     entity.phonetic = definition.phonetic
@@ -78,7 +77,10 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         return Future { promise in
             self.context.perform {
                 let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
-                request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+                request.sortDescriptors = [
+                    NSSortDescriptor(key: "word", ascending: true),
+                    NSSortDescriptor(key: "phonetic", ascending: false)
+                ]
                 request.fetchLimit = 10
 
                 do {
