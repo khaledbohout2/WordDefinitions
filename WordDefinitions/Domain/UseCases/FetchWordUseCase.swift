@@ -13,7 +13,7 @@ protocol FetchWordUseCase {
 
 class FetchWordUseCaseImplement: FetchWordUseCase {
     private let repository: DictionaryRepository
-    
+
     init(repository: DictionaryRepository) {
         self.repository = repository
     }

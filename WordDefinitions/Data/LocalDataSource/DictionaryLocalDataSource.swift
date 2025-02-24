@@ -11,6 +11,7 @@ import CoreData
 protocol DictionaryLocalDataSource {
     func fetchDefinition(for word: String) -> AnyPublisher<[WordDefinitionEntity], Error>
     func saveDefinitions(_ definitions: [WordDefinition])
+    func fetchRecentSearches() -> AnyPublisher<[String], Error>
 }
 
 class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
@@ -24,8 +25,8 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         return Future { promise in
             self.context.perform {
                 let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
-                
                 request.predicate = NSPredicate(format: "word ==[c] %@", word as NSString)
+                
                 do {
                     let results = try self.context.fetch(request)
                     promise(.success(results))
@@ -35,7 +36,7 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
             }
         }.eraseToAnyPublisher()
     }
-    
+
     func saveDefinitions(_ definitions: [WordDefinition]) {
         context.performAndWait {
             for definition in definitions {
@@ -52,6 +53,7 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
                         entity = WordDefinitionEntity(context: context)
                         entity.id = UUID()
                         entity.word = definition.word
+          //              entity.timestamp = Date() // Ensure we update the search time
                     }
 
                     entity.phonetic = definition.phonetic
@@ -70,6 +72,24 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
                 print("❌ Failed to save definitions: \(error)")
             }
         }
+    }
+
+    func fetchRecentSearches() -> AnyPublisher<[String], Error> {
+        return Future { promise in
+            self.context.perform {
+                let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
+                request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+                request.fetchLimit = 10
+
+                do {
+                    let results = try self.context.fetch(request)
+                    let words = results.map { $0.word ?? "" }
+                    promise(.success(words))
+                } catch {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 
     private func mapLicense(_ license: License) -> LicenseEntity {
@@ -110,3 +130,4 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         return entity
     }
 }
+

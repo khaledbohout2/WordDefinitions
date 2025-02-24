@@ -8,18 +8,13 @@
 import Moya
 import Combine
 
-import Combine
-
 protocol DictionaryRemoteDataSource {
     func fetchDefinition(for word: String) -> AnyPublisher<[WordDefinition], Error>
 }
 
-import Moya
-import Combine
-
 class DictionaryRemoteDataSourceImpl: DictionaryRemoteDataSource {
     private let provider: MoyaProvider<DictionaryAPI>
-    
+
     init(provider: MoyaProvider<DictionaryAPI>) {
         self.provider = provider
     }
