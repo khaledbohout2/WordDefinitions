@@ -132,4 +132,3 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         return entity
     }
 }
-
