@@ -40,3 +40,14 @@ extension MeaningEntity {
     @NSManaged public func removeFromDefinitions(_ values: NSSet)
 
 }
+
+extension MeaningEntity {
+    func toMeaning() -> Meaning {
+        return Meaning(
+            partOfSpeech: partOfSpeech ?? "",
+            definitions: (definitions as? Set<DefinitionEntity>)?.map { $0.toDefinition() } ?? [],
+            synonyms: synonyms as? [String] ?? [],
+            antonyms: antonyms as? [String] ?? []
+        )
+    }
+}

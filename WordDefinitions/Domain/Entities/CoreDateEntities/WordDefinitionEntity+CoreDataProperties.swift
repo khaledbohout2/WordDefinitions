@@ -59,3 +59,16 @@ extension WordDefinitionEntity {
     @NSManaged public func removeFromPhonetics(_ values: NSSet)
 
 }
+
+extension WordDefinitionEntity {
+    func toWordDefinition() -> WordDefinition {
+        return WordDefinition(
+            word: word ?? "",
+            phonetic: phonetic ?? "",
+            phonetics: (phonetics as? Set<PhoneticEntity>)?.map { $0.toPhonetic() } ?? [],
+            meanings: (meanings as? Set<MeaningEntity>)?.map { $0.toMeaning() } ?? [],
+            license: license?.toLicense() ?? License(name: "", url: ""),
+            sourceUrls: sourceUrls as? [String] ?? []
+        )
+    }
+}

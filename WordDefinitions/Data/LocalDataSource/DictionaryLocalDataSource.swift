@@ -88,7 +88,7 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         entity.definition = definition.definition
         entity.example = definition.example
         entity.synonyms = definition.synonyms as NSObject
-        entity.antonyms = definition.antonyms.joined(separator: ", ")
+        entity.antonyms = definition.antonyms as NSObject
         return entity
     }
 }

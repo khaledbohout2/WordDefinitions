@@ -21,3 +21,12 @@ extension LicenseEntity {
     @NSManaged public var url: String?
 
 }
+
+extension LicenseEntity {
+    func toLicense() -> License {
+        return License(
+            name: name ?? "",
+            url: url ?? ""
+        )
+    }
+}

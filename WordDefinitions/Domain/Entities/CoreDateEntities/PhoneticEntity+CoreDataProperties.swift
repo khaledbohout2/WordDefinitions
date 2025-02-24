@@ -23,3 +23,14 @@ extension PhoneticEntity {
     @NSManaged public var license: LicenseEntity?
 
 }
+
+extension PhoneticEntity {
+    func toPhonetic() -> Phonetic {
+        return Phonetic(
+            text: text ?? "",
+            audio: audio ?? "",
+            sourceURL: sourceURL ?? "",
+            license: license?.toLicense() ?? License(name: "", url: "")
+        )
+    }
+}

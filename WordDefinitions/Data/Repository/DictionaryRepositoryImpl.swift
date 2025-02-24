@@ -25,18 +25,9 @@ class DictionaryRepositoryImpl: DictionaryRepository {
                         .handleEvents(receiveOutput: { self.localDataSource.saveDefinitions($0) })
                         .eraseToAnyPublisher()
                 } else {
-                    return Just(cachedDefinitions.map { entity in
-                        WordDefinition(
-                            word: entity.word ?? "",
-                            phonetic: entity.phonetic ?? "",
-                            phonetics: [],
-                            meanings: [],
-                            license: License(name: "", url: ""), 
-                            sourceUrls: entity.sourceUrls as? [String] ?? []
-                        )
-                    })
-                    .setFailureType(to: Error.self)
-                    .eraseToAnyPublisher()
+                    return Just(cachedDefinitions.map { $0.toWordDefinition() })
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()
