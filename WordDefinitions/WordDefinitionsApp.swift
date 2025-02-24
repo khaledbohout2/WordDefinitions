@@ -8,13 +8,15 @@
 import SwiftUI
 
 @main
-struct WordDefinitionsApp: App {
-    let persistenceController = PersistenceController.shared
+struct DictionaryApp: App {
+    @StateObject private var coordinator = DictionaryCoordinator()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationStack(path: $coordinator.path) {
+                coordinator.start()
+                    .environmentObject(coordinator)
+            }
         }
     }
 }

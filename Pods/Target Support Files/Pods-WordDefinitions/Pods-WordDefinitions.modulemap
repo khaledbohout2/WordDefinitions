@@ -1,0 +1,6 @@
+framework module Pods_WordDefinitions {
+  umbrella header "Pods-WordDefinitions-umbrella.h"
+
+  export *
+  module * { export * }
+}

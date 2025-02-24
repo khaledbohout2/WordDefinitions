@@ -1,0 +1,6 @@
+framework module Pods_WordDefinitions_WordDefinitionsUITests {
+  umbrella header "Pods-WordDefinitions-WordDefinitionsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/DefinitionEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/DefinitionEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/LicenseEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/LicenseEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/MeaningEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/MeaningEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/PhoneticEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/PhoneticEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/WordDefinitionEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions/Domain/Entities/CoreDateEntities/WordDefinitionEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:WordDefinitions.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

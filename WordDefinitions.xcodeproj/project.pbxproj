@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3334C20CA1FC949451E0323D /* Pods_WordDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A23EE7176FCE6CE29109DA /* Pods_WordDefinitions.framework */; };
+		4C537F80DCF50E6D132AB334 /* Pods_WordDefinitionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13EDE5077B2C484FDD6FC753 /* Pods_WordDefinitionsTests.framework */; };
+		CD3665D4FC065046608F86CE /* Pods_WordDefinitions_WordDefinitionsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CF67930AB17135ED691D8E /* Pods_WordDefinitions_WordDefinitionsUITests.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A6EA40C12D6C83600081883E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +30,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07CF67930AB17135ED691D8E /* Pods_WordDefinitions_WordDefinitionsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordDefinitions_WordDefinitionsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13EDE5077B2C484FDD6FC753 /* Pods_WordDefinitionsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordDefinitionsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		422290EB5B050DE705EF9177 /* Pods-WordDefinitionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitionsTests.release.xcconfig"; path = "Target Support Files/Pods-WordDefinitionsTests/Pods-WordDefinitionsTests.release.xcconfig"; sourceTree = "<group>"; };
+		698E38E393332C83FE3ADECE /* Pods-WordDefinitions-WordDefinitionsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitions-WordDefinitionsUITests.release.xcconfig"; path = "Target Support Files/Pods-WordDefinitions-WordDefinitionsUITests/Pods-WordDefinitions-WordDefinitionsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		69A23EE7176FCE6CE29109DA /* Pods_WordDefinitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordDefinitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84677149A5FB4BE94A2969E0 /* Pods-WordDefinitions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitions.debug.xcconfig"; path = "Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions.debug.xcconfig"; sourceTree = "<group>"; };
+		8C4E080CAA4CAB9CA8BC9838 /* Pods-WordDefinitions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitions.release.xcconfig"; path = "Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions.release.xcconfig"; sourceTree = "<group>"; };
+		96E3512C897BAA5290678D7E /* Pods-WordDefinitionsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitionsTests.debug.xcconfig"; path = "Target Support Files/Pods-WordDefinitionsTests/Pods-WordDefinitionsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A6EA40AA2D6C835F0081883E /* WordDefinitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordDefinitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EA40C02D6C83600081883E /* WordDefinitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordDefinitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EA40CA2D6C83600081883E /* WordDefinitionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordDefinitionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9286847D2A2F6084907B875 /* Pods-WordDefinitions-WordDefinitionsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitions-WordDefinitionsUITests.debug.xcconfig"; path = "Target Support Files/Pods-WordDefinitions-WordDefinitionsUITests/Pods-WordDefinitions-WordDefinitionsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3334C20CA1FC949451E0323D /* Pods_WordDefinitions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C537F80DCF50E6D132AB334 /* Pods_WordDefinitionsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +83,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3665D4FC065046608F86CE /* Pods_WordDefinitions_WordDefinitionsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		333B365F7A44C0C0BA2103A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69A23EE7176FCE6CE29109DA /* Pods_WordDefinitions.framework */,
+				07CF67930AB17135ED691D8E /* Pods_WordDefinitions_WordDefinitionsUITests.framework */,
+				13EDE5077B2C484FDD6FC753 /* Pods_WordDefinitionsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		627F72EADC1EC31DDC5933CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84677149A5FB4BE94A2969E0 /* Pods-WordDefinitions.debug.xcconfig */,
+				8C4E080CAA4CAB9CA8BC9838 /* Pods-WordDefinitions.release.xcconfig */,
+				D9286847D2A2F6084907B875 /* Pods-WordDefinitions-WordDefinitionsUITests.debug.xcconfig */,
+				698E38E393332C83FE3ADECE /* Pods-WordDefinitions-WordDefinitionsUITests.release.xcconfig */,
+				96E3512C897BAA5290678D7E /* Pods-WordDefinitionsTests.debug.xcconfig */,
+				422290EB5B050DE705EF9177 /* Pods-WordDefinitionsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A6EA40A12D6C835F0081883E = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +120,8 @@
 				A6EA40C32D6C83600081883E /* WordDefinitionsTests */,
 				A6EA40CD2D6C83600081883E /* WordDefinitionsUITests */,
 				A6EA40AB2D6C835F0081883E /* Products */,
+				627F72EADC1EC31DDC5933CE /* Pods */,
+				333B365F7A44C0C0BA2103A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +142,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6EA40D42D6C83600081883E /* Build configuration list for PBXNativeTarget "WordDefinitions" */;
 			buildPhases = (
+				C6FC0F1333A9E832816547B5 /* [CP] Check Pods Manifest.lock */,
 				A6EA40A62D6C835F0081883E /* Sources */,
 				A6EA40A72D6C835F0081883E /* Frameworks */,
 				A6EA40A82D6C835F0081883E /* Resources */,
+				DB18C2C74AB9A1DDC21679FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -111,8 +156,6 @@
 				A6EA40AC2D6C835F0081883E /* WordDefinitions */,
 			);
 			name = WordDefinitions;
-			packageProductDependencies = (
-			);
 			productName = WordDefinitions;
 			productReference = A6EA40AA2D6C835F0081883E /* WordDefinitions.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +164,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6EA40D72D6C83600081883E /* Build configuration list for PBXNativeTarget "WordDefinitionsTests" */;
 			buildPhases = (
+				D20A336353D5CCC8FC38BE8A /* [CP] Check Pods Manifest.lock */,
 				A6EA40BC2D6C83600081883E /* Sources */,
 				A6EA40BD2D6C83600081883E /* Frameworks */,
 				A6EA40BE2D6C83600081883E /* Resources */,
@@ -134,8 +178,6 @@
 				A6EA40C32D6C83600081883E /* WordDefinitionsTests */,
 			);
 			name = WordDefinitionsTests;
-			packageProductDependencies = (
-			);
 			productName = WordDefinitionsTests;
 			productReference = A6EA40C02D6C83600081883E /* WordDefinitionsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -144,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6EA40DA2D6C83600081883E /* Build configuration list for PBXNativeTarget "WordDefinitionsUITests" */;
 			buildPhases = (
+				B56A8357CBDDCC33BAD9FD85 /* [CP] Check Pods Manifest.lock */,
 				A6EA40C62D6C83600081883E /* Sources */,
 				A6EA40C72D6C83600081883E /* Frameworks */,
 				A6EA40C82D6C83600081883E /* Resources */,
+				63294374A800AAFF954C3588 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,8 +201,6 @@
 				A6EA40CD2D6C83600081883E /* WordDefinitionsUITests */,
 			);
 			name = WordDefinitionsUITests;
-			packageProductDependencies = (
-			);
 			productName = WordDefinitionsUITests;
 			productReference = A6EA40CA2D6C83600081883E /* WordDefinitionsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -230,6 +272,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63294374A800AAFF954C3588 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WordDefinitions-WordDefinitionsUITests/Pods-WordDefinitions-WordDefinitionsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WordDefinitions-WordDefinitionsUITests/Pods-WordDefinitions-WordDefinitionsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WordDefinitions-WordDefinitionsUITests/Pods-WordDefinitions-WordDefinitionsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B56A8357CBDDCC33BAD9FD85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WordDefinitions-WordDefinitionsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6FC0F1333A9E832816547B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WordDefinitions-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D20A336353D5CCC8FC38BE8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WordDefinitionsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB18C2C74AB9A1DDC21679FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A6EA40A62D6C835F0081883E /* Sources */ = {
@@ -306,7 +451,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -367,7 +512,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -385,6 +530,7 @@
 		};
 		A6EA40D52D6C83600081883E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84677149A5FB4BE94A2969E0 /* Pods-WordDefinitions.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -406,7 +552,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
@@ -414,16 +560,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.wordDefinitions.WordDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
 		A6EA40D62D6C83600081883E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C4E080CAA4CAB9CA8BC9838 /* Pods-WordDefinitions.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -445,7 +593,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
@@ -453,32 +601,35 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.wordDefinitions.WordDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
 		A6EA40D82D6C83600081883E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96E3512C897BAA5290678D7E /* Pods-WordDefinitionsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48FW6TS6N6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.wordDefinitions.WordDefinitionsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordDefinitions.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WordDefinitions";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -486,22 +637,24 @@
 		};
 		A6EA40D92D6C83600081883E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 422290EB5B050DE705EF9177 /* Pods-WordDefinitionsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48FW6TS6N6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.wordDefinitions.WordDefinitionsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordDefinitions.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WordDefinitions";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -509,21 +662,23 @@
 		};
 		A6EA40DB2D6C83600081883E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9286847D2A2F6084907B875 /* Pods-WordDefinitions-WordDefinitionsUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48FW6TS6N6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.wordDefinitions.WordDefinitionsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = WordDefinitions;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -531,21 +686,23 @@
 		};
 		A6EA40DC2D6C83600081883E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 698E38E393332C83FE3ADECE /* Pods-WordDefinitions-WordDefinitionsUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48FW6TS6N6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.wordDefinitions.WordDefinitionsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = WordDefinitions;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
