@@ -10,7 +10,7 @@ import CoreData
 
 protocol DictionaryLocalDataSource {
     func fetchDefinition(for word: String) -> AnyPublisher<[WordDefinitionEntity], Error>
-    func saveDefinitions(_ definitions: [WordDefinition])
+    func saveDefinitions(_ definitions: [WordDefinition]) throws
     func fetchRecentSearches() -> AnyPublisher<[String], Error>
 }
 
@@ -37,41 +37,42 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         }.eraseToAnyPublisher()
     }
 
-    func saveDefinitions(_ definitions: [WordDefinition]) {
-        context.performAndWait {
-            for definition in definitions {
-                let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
-                request.predicate = NSPredicate(format: "word ==[c] %@", definition.word as NSString)
-                
-                do {
-                    let existingEntities = try context.fetch(request)
+    func saveDefinitions(_ definitions: [WordDefinition]) throws {
+        do {
+            try context.performAndWait {
+                for definition in definitions {
+                    let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
+                    request.predicate = NSPredicate(format: "word ==[c] %@", definition.word as NSString)
                     
-                    let entity: WordDefinitionEntity
-                    if let existingEntity = existingEntities.first {
-                        entity = existingEntity
-                    } else {
-                        entity = WordDefinitionEntity(context: context)
-                        entity.id = UUID()
-                        entity.word = definition.word
+                    do {
+                        let existingEntities = try context.fetch(request)
+                        
+                        let entity: WordDefinitionEntity
+                        if let existingEntity = existingEntities.first {
+                            entity = existingEntity
+                        } else {
+                            entity = WordDefinitionEntity(context: context)
+                            entity.id = UUID()
+                            entity.word = definition.word
+                        }
+
+                        entity.phonetic = definition.phonetic
+                        entity.sourceUrls = definition.sourceUrls as NSObject
+                        entity.license = mapLicense(definition.license)
+                        entity.phonetics = NSSet(array: definition.phonetics.map(mapPhonetic))
+                        entity.meanings = NSSet(array: definition.meanings.map(mapMeaning))
+
+                    } catch {
+                        print("❌ Fetch Error: \(error)")
                     }
-
-                    entity.phonetic = definition.phonetic
-                    entity.sourceUrls = definition.sourceUrls as NSObject
-                    entity.license = mapLicense(definition.license)
-                    entity.phonetics = NSSet(array: definition.phonetics.map(mapPhonetic))
-                    entity.meanings = NSSet(array: definition.meanings.map(mapMeaning))
-
-                } catch {
-                    print("❌ Fetch Error: \(error)")
                 }
-            }
-            do {
                 try context.save()
-            } catch {
-                print("❌ Failed to save definitions: \(error)")
             }
+        } catch {
+            throw PersistenceError.saveError(error)
         }
     }
+
 
     func fetchRecentSearches() -> AnyPublisher<[String], Error> {
         return Future { promise in

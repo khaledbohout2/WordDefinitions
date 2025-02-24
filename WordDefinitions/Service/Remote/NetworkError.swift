@@ -9,5 +9,6 @@ import Foundation
 
 enum NetworkError: Error {
     case noInternet
+    case requestFailed(Error)
+    case decodingFailed(Error)
 }
-

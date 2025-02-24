@@ -21,8 +21,16 @@ class DictionaryRemoteDataSourceImpl: DictionaryRemoteDataSource {
 
     func fetchDefinition(for word: String) -> AnyPublisher<[WordDefinition], Error> {
         return provider.requestPublisher(.search(word: word))
-            .map(\.data)
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    throw NetworkError.requestFailed(NSError(domain: "", code: response.statusCode, userInfo: nil))
+                }
+                return response.data
+            }
             .decode(type: [WordDefinition].self, decoder: JSONDecoder())
+            .mapError { error in
+                NetworkError.decodingFailed(error)
+            }
             .eraseToAnyPublisher()
     }
 }

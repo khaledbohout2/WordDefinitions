@@ -26,10 +26,14 @@ class DictionaryRepositoryImpl: DictionaryRepository {
     }
 
     func getDefinition(for word: String) -> AnyPublisher<[WordDefinition], Error> {
-        fetchCachedDefinition(for: word)
+        return fetchCachedDefinition(for: word)
             .flatMap { cachedDefinitions -> AnyPublisher<[WordDefinition], Error> in
                 if cachedDefinitions.isEmpty {
                     return self.fetchRemoteDefinitionIfOnline(for: word)
+                        .catch { error -> AnyPublisher<[WordDefinition], Error> in
+                            return Fail(error: error).eraseToAnyPublisher()
+                        }
+                        .eraseToAnyPublisher()
                 } else {
                     return Just(cachedDefinitions)
                         .setFailureType(to: Error.self)
@@ -46,12 +50,24 @@ class DictionaryRepositoryImpl: DictionaryRepository {
     }
 
     private func fetchRemoteDefinitionIfOnline(for word: String) -> AnyPublisher<[WordDefinition], Error> {
-        isConnected ? remoteDataSource.fetchDefinition(for: word)
-            .handleEvents(receiveOutput: { definitions in
-                self.localDataSource.saveDefinitions(definitions)
-            })
+        guard isConnected else {
+            return Fail(error: NetworkError.noInternet).eraseToAnyPublisher()
+        }
+
+        return remoteDataSource.fetchDefinition(for: word)
+            .flatMap { definitions in
+                Future<Void, Never> { promise in
+                    do {
+                        try self.localDataSource.saveDefinitions(definitions)
+                        promise(.success(()))
+                    } catch {
+                        print("❌ Save Definitions Error: \(error)")
+                    }
+                }
+                .map { _ in definitions }
+                .eraseToAnyPublisher()
+            }
             .eraseToAnyPublisher()
-            : Fail(error: NetworkError.noInternet).eraseToAnyPublisher()
     }
 
     func getPastSearchWords() -> AnyPublisher<[String], Error> {
@@ -61,6 +77,5 @@ class DictionaryRepositoryImpl: DictionaryRepository {
     func isConnectedToNetwork() -> AnyPublisher<Bool, Never> {
         return networkMonitor.isConnectedPublisher
     }
+
 }
-
-
