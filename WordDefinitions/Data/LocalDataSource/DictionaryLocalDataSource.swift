@@ -19,41 +19,59 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
     init(context: NSManagedObjectContext) {
         self.context = context
     }
-    
+
     func fetchDefinition(for word: String) -> AnyPublisher<[WordDefinitionEntity], Error> {
-        let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "word == %@", word)
-        
         return Future { promise in
-            do {
-                let results = try self.context.fetch(request)
-                promise(.success(results))
-            } catch {
-                promise(.failure(error))
+            self.context.perform {
+                let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
+                
+                request.predicate = NSPredicate(format: "word ==[c] %@", word as NSString)
+                do {
+                    let results = try self.context.fetch(request)
+                    promise(.success(results))
+                } catch {
+                    promise(.failure(error))
+                }
             }
         }.eraseToAnyPublisher()
     }
     
     func saveDefinitions(_ definitions: [WordDefinition]) {
-        for definition in definitions {
-            let entity = WordDefinitionEntity(context: context)
-            entity.id = UUID()
-            entity.word = definition.word
-            entity.phonetic = definition.phonetic
-            entity.sourceUrls = definition.sourceUrls as NSObject
-            
-            entity.license = mapLicense(definition.license)
-            entity.phonetics = NSSet(array: definition.phonetics.map(mapPhonetic))
-            entity.meanings = NSSet(array: definition.meanings.map(mapMeaning))
-        }
-        
-        do {
-            try context.save()
-        } catch {
-            print("Failed to save definitions: \(error)")
+        context.performAndWait {
+            for definition in definitions {
+                let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
+                request.predicate = NSPredicate(format: "word ==[c] %@", definition.word as NSString)
+                
+                do {
+                    let existingEntities = try context.fetch(request)
+                    
+                    let entity: WordDefinitionEntity
+                    if let existingEntity = existingEntities.first {
+                        entity = existingEntity
+                    } else {
+                        entity = WordDefinitionEntity(context: context)
+                        entity.id = UUID()
+                        entity.word = definition.word
+                    }
+
+                    entity.phonetic = definition.phonetic
+                    entity.sourceUrls = definition.sourceUrls as NSObject
+                    entity.license = mapLicense(definition.license)
+                    entity.phonetics = NSSet(array: definition.phonetics.map(mapPhonetic))
+                    entity.meanings = NSSet(array: definition.meanings.map(mapMeaning))
+
+                } catch {
+                    print("❌ Fetch Error: \(error)")
+                }
+            }
+            do {
+                try context.save()
+            } catch {
+                print("❌ Failed to save definitions: \(error)")
+            }
         }
     }
-    
+
     private func mapLicense(_ license: License) -> LicenseEntity {
         let entity = LicenseEntity(context: context)
         entity.id = UUID()
@@ -71,7 +89,7 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         entity.license = phonetic.license.map(mapLicense)
         return entity
     }
-    
+
     private func mapMeaning(_ meaning: Meaning) -> MeaningEntity {
         let entity = MeaningEntity(context: context)
         entity.id = UUID()
@@ -81,7 +99,7 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
         entity.definitions = NSSet(array: meaning.definitions.map(mapDefinition))
         return entity
     }
-    
+
     private func mapDefinition(_ definition: Definition) -> DefinitionEntity {
         let entity = DefinitionEntity(context: context)
         entity.id = UUID()

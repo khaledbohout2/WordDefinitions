@@ -27,6 +27,7 @@ class DictionaryViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     self.errorMessage = error.localizedDescription
+                    self.definitions.removeAll()
                 }
             }, receiveValue: { definitions in
                 self.definitions = definitions

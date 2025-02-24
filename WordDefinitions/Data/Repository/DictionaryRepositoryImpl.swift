@@ -19,17 +19,21 @@ class DictionaryRepositoryImpl: DictionaryRepository {
 
     func getDefinition(for word: String) -> AnyPublisher<[WordDefinition], Error> {
         localDataSource.fetchDefinition(for: word)
+            .map { $0.map { $0.toWordDefinition() } }
             .flatMap { cachedDefinitions -> AnyPublisher<[WordDefinition], Error> in
                 if cachedDefinitions.isEmpty {
                     return self.remoteDataSource.fetchDefinition(for: word)
-                        .handleEvents(receiveOutput: { self.localDataSource.saveDefinitions($0) })
+                        .handleEvents(receiveOutput: {
+                            self.localDataSource.saveDefinitions($0)
+                        })
                         .eraseToAnyPublisher()
                 } else {
-                    return Just(cachedDefinitions.map { $0.toWordDefinition() })
+                    return Just(cachedDefinitions)
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()
     }
+
 }
