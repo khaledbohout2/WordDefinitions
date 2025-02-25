@@ -8,7 +8,13 @@
 import Combine
 import Network
 
-class NetworkMonitor {
+import Combine
+
+protocol NetworkMonitorProtocol {
+    var isConnectedPublisher: AnyPublisher<Bool, Never> { get }
+}
+
+class NetworkMonitor: NetworkMonitorProtocol {
     private let monitor = NWPathMonitor()
     private let queue = DispatchQueue.global(qos: .background)
     private let subject = CurrentValueSubject<Bool, Never>(true)

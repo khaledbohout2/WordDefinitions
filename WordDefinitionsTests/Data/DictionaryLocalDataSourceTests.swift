@@ -5,33 +5,67 @@
 //  Created by Khaled-Circle on 25/02/2025.
 //
 
-@testable import WordDefinitions
-import Testing
+import XCTest
 import Combine
 import CoreData
+@testable import WordDefinitions
 
-struct DictionaryLocalDataSourceTests {
+class DictionaryLocalDataSourceTests: XCTestCase {
     private var sut: DictionaryLocalDataSourceImpl!
     private var mockContext: NSManagedObjectContext!
-    
-    init() {
+    private var cancellables: Set<AnyCancellable> = []
+
+    override func setUp() {
+        super.setUp()
+
         let container = NSPersistentContainer(name: "TestModel")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { _, _ in }
-        mockContext = container.viewContext
-        
+
+        let expectation = expectation(description: "Persistent store loaded")
+        container.loadPersistentStores { _, error in
+            XCTAssertNil(error, "Failed to load persistent store: \(error?.localizedDescription ?? "")")
+            self.mockContext = container.viewContext
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5.0)
+
         sut = DictionaryLocalDataSourceImpl(context: mockContext)
     }
-    
-    @Test func testSaveAndFetchDefinition() async throws {
+
+    override func tearDown() {
+        sut = nil
+        mockContext = nil
+        cancellables.removeAll()
+        super.tearDown()
+    }
+
+    func testSaveAndFetchDefinition() throws {
         let word = "test"
-        let definitions = [WordDefinition(word: word, phonetic: "tɛst", sourceUrls: [], license: License(name: "", url: ""), phonetics: [], meanings: [])]
+        let definitions = [
+            WordDefinition(
+                word: word,
+                phonetic: "tɛst",
+                phonetics: [],
+                meanings: [] ,
+                license: License(name: "", url: ""),
+                sourceUrls: []
+            )
+        ]
 
         try sut.saveDefinitions(definitions)
-        
-        let expectation = #expect(value: try await sut.fetchDefinition(for: word).first()?.word == word)
-        try await expectation.fulfill()
+
+        let expectation = expectation(description: "Fetch definitions")
+
+        sut.fetchDefinition(for: word)
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                XCTAssertEqual(result.first?.word, word, "Fetched word definition does not match")
+                expectation.fulfill()
+            })
+            .store(in: &cancellables)
+
+        waitForExpectations(timeout: 1.0)
     }
 }
+

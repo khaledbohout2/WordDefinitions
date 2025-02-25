@@ -14,7 +14,9 @@ class MockDictionaryLocalDataSource: DictionaryLocalDataSource {
     var mockRecentSearches: [String] = []
 
     func fetchDefinition(for word: String) -> AnyPublisher<[WordDefinitionEntity], Error> {
-        Just(mockDefinitions).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(mockDefinitions.filter { $0.word == word })
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
 
     func saveDefinitions(_ definitions: [WordDefinition]) throws { }

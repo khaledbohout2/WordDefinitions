@@ -11,11 +11,11 @@ import CoreData
 class DictionaryRepositoryImpl: DictionaryRepository {
     private let localDataSource: DictionaryLocalDataSource
     private let remoteDataSource: DictionaryRemoteDataSource
-    private let networkMonitor: NetworkMonitor
+    private let networkMonitor: NetworkMonitorProtocol
     private var cancellables = Set<AnyCancellable>()
     @Published private var isConnected: Bool = true
 
-    init(local: DictionaryLocalDataSource, remote: DictionaryRemoteDataSource, networkMonitor: NetworkMonitor) {
+    init(local: DictionaryLocalDataSource, remote: DictionaryRemoteDataSource, networkMonitor: NetworkMonitorProtocol) {
         self.localDataSource = local
         self.remoteDataSource = remote
         self.networkMonitor = networkMonitor
