@@ -35,9 +35,12 @@ class DictionaryRepositoryImpl: DictionaryRepository {
                         }
                         .eraseToAnyPublisher()
                 } else {
-                    return Just(cachedDefinitions)
+                    let cachedPublisher = Just(cachedDefinitions)
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
+
+                    self.updateCacheWithLatestDefinition(for: word)
+                    return cachedPublisher
                 }
             }
             .eraseToAnyPublisher()
@@ -60,14 +63,27 @@ class DictionaryRepositoryImpl: DictionaryRepository {
                     do {
                         try self.localDataSource.saveDefinitions(definitions)
                         promise(.success(()))
-                    } catch {
-                        print("❌ Save Definitions Error: \(error)")
-                    }
+                    } catch {}
                 }
                 .map { _ in definitions }
                 .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
+    }
+
+    private func updateCacheWithLatestDefinition(for word: String) {
+        guard isConnected else { return }
+
+        remoteDataSource.fetchDefinition(for: word)
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                }
+            }, receiveValue: { definitions in
+                do {
+                    try self.localDataSource.saveDefinitions(definitions)
+                } catch {}
+            })
+            .store(in: &cancellables)
     }
 
     func getPastSearchWords() -> AnyPublisher<[String], Error> {

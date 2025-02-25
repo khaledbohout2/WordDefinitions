@@ -40,39 +40,44 @@ class DictionaryLocalDataSourceImpl: DictionaryLocalDataSource {
     func saveDefinitions(_ definitions: [WordDefinition]) throws {
         do {
             try context.performAndWait {
+                let words = definitions.map { $0.word.lowercased() }
+                let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
+                request.predicate = NSPredicate(format: "word IN %@", words)
+
+                let existingEntities = try context.fetch(request)
+                var entityMap = Dictionary(uniqueKeysWithValues: existingEntities.map { ($0.word?.lowercased() ?? "", $0) })
+
+                var didModify = false
+
                 for definition in definitions {
-                    let request: NSFetchRequest<WordDefinitionEntity> = WordDefinitionEntity.fetchRequest()
-                    request.predicate = NSPredicate(format: "word ==[c] %@", definition.word as NSString)
-                    
-                    do {
-                        let existingEntities = try context.fetch(request)
-                        
-                        let entity: WordDefinitionEntity
-                        if let existingEntity = existingEntities.first {
-                            entity = existingEntity
-                        } else {
-                            entity = WordDefinitionEntity(context: context)
-                            entity.id = UUID()
-                            entity.word = definition.word
-                        }
+                    let normalizedWord = definition.word.lowercased()
 
-                        entity.phonetic = definition.phonetic
-                        entity.sourceUrls = definition.sourceUrls as NSObject
-                        entity.license = mapLicense(definition.license)
-                        entity.phonetics = NSSet(array: definition.phonetics.map(mapPhonetic))
-                        entity.meanings = NSSet(array: definition.meanings.map(mapMeaning))
-
-                    } catch {
-                        print("❌ Fetch Error: \(error)")
+                    let entity: WordDefinitionEntity
+                    if let existingEntity = entityMap[normalizedWord] {
+                        entity = existingEntity
+                    } else {
+                        entity = WordDefinitionEntity(context: context)
+                        entity.id = UUID()
+                        entity.word = definition.word
+                        entityMap[normalizedWord] = entity
                     }
+
+                    entity.phonetic = definition.phonetic
+                    entity.sourceUrls = definition.sourceUrls as NSObject
+                    entity.license = mapLicense(definition.license)
+                    entity.phonetics = NSSet(array: definition.phonetics.map(mapPhonetic))
+                    entity.meanings = NSSet(array: definition.meanings.map(mapMeaning))
+                    
+                    didModify = true
                 }
-                try context.save()
+                if didModify {
+                    try context.save()
+                }
             }
         } catch {
             throw PersistenceError.saveError(error)
         }
     }
-
 
     func fetchRecentSearches() -> AnyPublisher<[String], Error> {
         return Future { promise in
