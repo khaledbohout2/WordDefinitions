@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3334C20CA1FC949451E0323D /* Pods_WordDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A23EE7176FCE6CE29109DA /* Pods_WordDefinitions.framework */; };
 		4C537F80DCF50E6D132AB334 /* Pods_WordDefinitionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13EDE5077B2C484FDD6FC753 /* Pods_WordDefinitionsTests.framework */; };
+		A62C43772DE1FA78001B6B28 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A62C43762DE1FA6F001B6B28 /* README.md */; };
 		CD3665D4FC065046608F86CE /* Pods_WordDefinitions_WordDefinitionsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CF67930AB17135ED691D8E /* Pods_WordDefinitions_WordDefinitionsUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		84677149A5FB4BE94A2969E0 /* Pods-WordDefinitions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitions.debug.xcconfig"; path = "Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions.debug.xcconfig"; sourceTree = "<group>"; };
 		8C4E080CAA4CAB9CA8BC9838 /* Pods-WordDefinitions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitions.release.xcconfig"; path = "Target Support Files/Pods-WordDefinitions/Pods-WordDefinitions.release.xcconfig"; sourceTree = "<group>"; };
 		96E3512C897BAA5290678D7E /* Pods-WordDefinitionsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordDefinitionsTests.debug.xcconfig"; path = "Target Support Files/Pods-WordDefinitionsTests/Pods-WordDefinitionsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A62C43762DE1FA6F001B6B28 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A6EA40AA2D6C835F0081883E /* WordDefinitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordDefinitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EA40C02D6C83600081883E /* WordDefinitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordDefinitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EA40CA2D6C83600081883E /* WordDefinitionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordDefinitionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 		A6EA40A12D6C835F0081883E = {
 			isa = PBXGroup;
 			children = (
+				A62C43762DE1FA6F001B6B28 /* README.md */,
 				A6EA40AC2D6C835F0081883E /* WordDefinitions */,
 				A6EA40C32D6C83600081883E /* WordDefinitionsTests */,
 				A6EA40CD2D6C83600081883E /* WordDefinitionsUITests */,
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62C43772DE1FA78001B6B28 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
