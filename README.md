@@ -39,16 +39,43 @@ The application adopts an **offline-first** approach, prioritizing cached data w
 -   Xcode 15 or later
 -   iOS 16 or later
 
-## How to Run
+## Setup and Installation
 
-1.  Clone this repository:
+1.  Clone the repository:
     ```bash
-    git clone <repository_url>
+    git clone [repository_url]
+    cd [project_directory]
     ```
-2.  Open the `*.xcodeproj` file in Xcode.
-3.  Build and run the application on a simulator or a physical device.
+2.  Open the `iOS Dictionary App.xcodeproj` file in Xcode.
+3.  Build and run the application on a simulator or a physical iOS device.
                                                                                                  ---
 
-                                                                                                 ## Contact
+## Project Structure
+                                                                                                 iOS Dictionary App/
+                                                                                                 ├── Data/
+                                                                                                 │   ├── DataSources/
+                                                                                                 │   │   ├── Local/
+                                                                                                 │   │   │   └── CoreData/
+                                                                                                 │   │   └── Remote/
+                                                                                                 │   │       └── NetworkService/
+                                                                                                 │   ├── Repositories/
+                                                                                                 ├── Domain/
+                                                                                                 │   ├── Entities/
+                                                                                                 │   ├── Interfaces/
+                                                                                                 │   └── UseCases/
+                                                                                                 ├── Presentation/
+                                                                                                 │   ├── Components/
+                                                                                                 │   ├── Scenes/
+                                                                                                 │   │   ├── DefinitionDetail/
+                                                                                                 │   │   ├── Search/
+                                                                                                 │   │   └── SearchHistory/
+                                                                                                 │   ├── ViewModels/
+                                                                                                 │   └── Coordinator/
+                                                                                                 └── iOS Dictionary App.swift
+                                                                                                 *(Note: This is a general representation and the actual structure might vary slightly.)*
 
-                                                                                                 If you have any questions or feedback, feel free to reach out.
+                                                                                                 ## Contributing
+
+                                                                                                 Contributions are welcome! Please feel free to submit pull requests with improvements or bug fixes. For major changes, please open an issue first to discuss what you would like to change.
+
+                                                                                                 ---
